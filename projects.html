@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мої Проекти — Alba Homelan Portfolio Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050811;
+      --bg-2: #080d1a;
+      --accent: #6366f1;
+      --accent-2: #8b5cf6;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --glass: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.08);
+      --radius: 16px;
+      --border: rgba(99,102,241,0.2);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      padding: 3rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.15;
+      background: radial-gradient(circle, var(--accent), transparent);
+    }
+    .orb-1 { top: -200px; left: -200px; }
+    .orb-2 { bottom: -200px; right: -200px; }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+    }
+    .card-top h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      text-transform: capitalize;
+    }
+    .card-top p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: block;
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      color: var(--text);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--accent);
+    }
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+  <div class="container">
+    <div class="header">
+      <h1>🚀 Alba Homelan Portfolio Hub</h1>
+      <p>Центральна панель навігації по всіх ваших репозиторіях на GitHub</p>
+    </div>
+    <div class="grid">
+      <!-- 1 -->
+      <div class="card">
+        <div class="card-top">
+          <h3>digiflow-albania</h3>
+          <p>OSINT shadow & coordinates calculator database with business automation proposals in Durres.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://albahomelan-bot.github.io/digiflow-albania/" target="_blank">👉 Відкрити Сайт</a>
+          <a class="btn btn-secondary" href="https://github.com/albahomelan-bot/digiflow-albania" target="_blank">📦 Репозиторій</a>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="card">
+        <div class="card-top">
+          <h3>radiant-rutherford</h3>
+          <p>Landing page and interactive web application template built for premium business representation.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://albahomelan-bot.github.io/radiant-rutherford/" target="_blank">👉 Відкрити Сайт</a>
+          <a class="btn btn-secondary" href="https://github.com/albahomelan-bot/radiant-rutherford" target="_blank">📦 Репозиторій</a>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="card">
+        <div class="card-top">
+          <h3>friendly-royalq</h3>
+          <p>Trading helper landing interface and dashboard tools for cryptocurrency automation systems.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://albahomelan-bot.github.io/friendly-royalq/" target="_blank">👉 Відкрити Сайт</a>
+          <a class="btn btn-secondary" href="https://github.com/albahomelan-bot/friendly-royalq" target="_blank">📦 Репозиторій</a>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="card">
+        <div class="card-top">
+          <h3>studio-spa</h3>
+          <p>Premium dark-themed landing page representing elegant wellness & aesthetic health studio.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://albahomelan-bot.github.io/studio-spa/" target="_blank">👉 Відкрити Сайт</a>
+          <a class="btn btn-secondary" href="https://github.com/albahomelan-bot/studio-spa" target="_blank">📦 Репозиторій</a>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="card">
+        <div class="card-top">
+          <h3>apetisimmo-cafe</h3>
+          <p>Restaurant and bakery web presentation website with menu highlights and reservation channels.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://albahomelan-bot.github.io/apetisimmo-cafe/" target="_blank">👉 Відкрити Сайт</a>
+          <a class="btn btn-secondary" href="https://github.com/albahomelan-bot/apetisimmo-cafe" target="_blank">📦 Репозиторій</a>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="card">
+        <div class="card-top">
+          <h3>spa-landing-studio</h3>
+          <p>Another variation of highly conversions-focused spa & body treatment aesthetic page.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://albahomelan-bot.github.io/spa-landing-studio/" target="_blank">👉 Відкрити Сайт</a>
+          <a class="btn btn-secondary" href="https://github.com/albahomelan-bot/spa-landing-studio" target="_blank">📦 Репозиторій</a>
+        </div>
+      </div>
+      <!-- 7 -->
+      <div class="card">
+        <div class="card-top">
+          <h3>web-agency-portfolio</h3>
+          <p>Modern design agency portfolio showing case studies, automation concepts and pricing models.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://albahomelan-bot.github.io/web-agency-portfolio/" target="_blank">👉 Відкрити Сайт</a>
+          <a class="btn btn-secondary" href="https://github.com/albahomelan-bot/web-agency-portfolio" target="_blank">📦 Репозиторій</a>
+        </div>
+      </div>
+      <!-- 8 -->
+      <div class="card">
+        <div class="card-top">
+          <h3>portfolio</h3>
+          <p>Clean developer portfolio website capturing all past client builds and dynamic resumes.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="https://albahomelan-bot.github.io/portfolio/" target="_blank">👉 Відкрити Сайт</a>
+          <a class="btn btn-secondary" href="https://github.com/albahomelan-bot/portfolio" target="_blank">📦 Репозиторій</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>© 2026 Alba Homelan Hub · Розроблено для пана Андрія</p>
+    </div>
+  </div>
+</body>
+</html>
