@@ -79,25 +79,32 @@ function getSiteStatusBadge(st) {
   return '<span class="site-badge site-none">No Site</span>';
 }
 
+const tableLabels = {
+  en: { num: "#", name: "Company", sector: "Sector", loc: "Location", phone: "Phone", email: "Email", site: "Website", status: "Status", auto: "Auto %", action: "Action" },
+  uk: { num: "#", name: "Компанія", sector: "Сектор", loc: "Локація", phone: "Телефон", email: "Email", site: "Сайт", status: "Статус", auto: "Авто %", action: "Дія" },
+  al: { num: "#", name: "Kompania", sector: "Sektori", loc: "Vendndodhja", phone: "Telefon", email: "Email", site: "Faqja", status: "Statusi", auto: "Auto %", action: "Veprimi" }
+};
+
 function renderTable() {
   const tbody=document.getElementById('companies-tbody');
+  const lbl = tableLabels[currentLang] || tableLabels.en;
+  
   tbody.innerHTML=filteredCompanies.map(c=>`
     <tr>
-      <td class="col-num" style="color:var(--text-muted);font-weight:600;">${c.id}</td>
-      <td class="col-name" title="${c.name}"><strong>${c.name}</strong></td>
-      <td class="col-sector"><span class="sector-badge ${getSectorBadgeClass(c.sector)}">${getSectorLabel(c.sector)}</span></td>
-      <td class="col-location" style="color:var(--text-muted);" title="${c.location}">${c.location}</td>
-      <td class="col-phone"><a href="tel:${c.phone.replace(/\s/g,'')}" style="color:var(--accent-3);">${c.phone}</a></td>
-      <td class="col-email">${c.email!=='none'?`<a href="mailto:${c.email}" style="color:var(--accent);">${c.email}</a>`:'—'}</td>
-      <td class="col-site">${c.website!=='none'?`<a href="https://${c.website}" target="_blank" style="color:var(--accent-3);">${c.website}</a>`:'—'}</td>
-      <td class="col-status">${getSiteStatusBadge(c.siteStatus)}</td>
-      <td class="col-potential">
+      <td class="col-num" data-label="${lbl.num}" style="color:var(--text-muted);font-weight:600;">${c.id}</td>
+      <td class="col-name" data-label="${lbl.name}" title="${c.name}"><strong>${c.name}</strong></td>
+      <td class="col-sector" data-label="${lbl.sector}"><span class="sector-badge ${getSectorBadgeClass(c.sector)}">${getSectorLabel(c.sector)}</span></td>
+      <td class="col-location" data-label="${lbl.loc}" style="color:var(--text-muted);" title="${c.location}">${c.location}</td>
+      <td class="col-phone" data-label="${lbl.phone}"><a href="tel:${c.phone.replace(/\s/g,'')}" style="color:var(--accent-3);">${c.phone}</a></td>
+      <td class="col-email" data-label="${lbl.email}">${c.email!=='none'?`<a href="mailto:${c.email}" style="color:var(--accent);">${c.email}</a>`:'—'}</td>
+      <td class="col-site" data-label="${lbl.site}">${c.website!=='none'?`<a href="https://${c.website}" target="_blank" style="color:var(--accent-3);">${c.website}</a>`:'—'}</td>
+      <td class="col-status" data-label="${lbl.status}">${getSiteStatusBadge(c.siteStatus)}</td>
+      <td class="col-potential" data-label="${lbl.auto}">
         <div class="potential-bar"><div class="potential-fill" style="width:${c.automationPotential}%"></div></div>
         <span class="potential-label">${c.automationPotential}%</span>
       </td>
-      <td class="col-action"><button class="table-action-btn" onclick="openModal(${c.id})">Proposal</button></td>
+      <td class="col-action" data-label="${lbl.action}"><button class="table-action-btn" onclick="openModal(${c.id})">Proposal</button></td>
     </tr>`).join('');
-
 }
 
 function renderProposals() {
@@ -261,6 +268,7 @@ function applyTranslation(lang) {
     else if (lang === 'al') search.placeholder = 'Kërko sipas kompanisë, sektorit ose vendndodhjes...';
     else search.placeholder = 'Search by company, sector, or location...';
   }
+  renderTable();
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
