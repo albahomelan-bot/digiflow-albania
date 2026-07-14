@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Email Templates — DigiFlow Albania</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#050811;color:#f1f5f9;font-family:'Inter',sans-serif;min-height:100vh;padding:2rem;}
+.header{text-align:center;margin-bottom:3rem;}
+.header h1{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;background:linear-gradient(135deg,#6366f1,#8b5cf6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.5rem;}
+.header p{color:#94a3b8;}
+.back-btn{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);color:#818cf8;padding:0.5rem 1rem;border-radius:50px;font-size:0.85rem;text-decoration:none;margin-bottom:2rem;transition:all 0.3s;}
+.back-btn:hover{background:rgba(99,102,241,0.25);}
+.search{width:100%;max-width:600px;margin:0 auto 2rem;display:block;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1.25rem;color:#f1f5f9;font-size:0.95rem;outline:none;font-family:'Inter',sans-serif;}
+.search:focus{border-color:#6366f1;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.5rem;max-width:1400px;margin:0 auto;}
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;transition:all 0.3s;}
+.card:hover{border-color:#6366f1;box-shadow:0 20px 40px rgba(99,102,241,0.15);}
+.card-header{background:linear-gradient(135deg,rgba(99,102,241,0.15),rgba(139,92,246,0.08));padding:1.25rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.card-num{font-size:0.72rem;color:#94a3b8;font-weight:600;margin-bottom:0.3rem;}
+.card-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.2rem;}
+.card-sector{font-size:0.78rem;color:#94a3b8;}
+.email-preview{padding:1.5rem;background:#0a0f1e;font-size:0.82rem;line-height:1.7;color:#cbd5e1;max-height:220px;overflow:hidden;position:relative;}
+.email-preview::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,#0a0f1e);}
+.card-actions{padding:1rem 1.5rem;display:flex;gap:0.75rem;}
+.btn-copy{flex:1;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;padding:0.6rem;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif;}
+.btn-copy:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(99,102,241,0.4);}
+.btn-copy.copied{background:linear-gradient(135deg,#059669,#10b981);}
+.btn-view{background:transparent;border:1px solid rgba(255,255,255,0.1);color:#94a3b8;padding:0.6rem 1rem;border-radius:8px;font-size:0.85rem;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif;}
+.btn-view:hover{border-color:#6366f1;color:#818cf8;}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.9);backdrop-filter:blur(10px);z-index:1000;display:none;align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:#0d1428;border:1px solid rgba(99,102,241,0.3);border-radius:16px;width:100%;max-width:700px;max-height:90vh;overflow-y:auto;}
+.modal-top{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+.modal-top h3{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;}
+.modal-close-btn{background:rgba(255,255,255,0.08);border:none;color:#94a3b8;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;}
+.modal-close-btn:hover{background:#6366f1;color:#fff;}
+.modal-body{padding:1.5rem;}
+.email-full{background:#050811;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.5rem;font-size:0.85rem;line-height:1.8;color:#cbd5e1;white-space:pre-wrap;font-family:'Inter',sans-serif;}
+.modal-copy-btn{width:100%;margin-top:1rem;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;padding:0.8rem;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;}
+.modal-copy-btn:hover{box-shadow:0 10px 30px rgba(99,102,241,0.4);}
+.count{text-align:center;color:#94a3b8;font-size:0.85rem;margin-bottom:1.5rem;}
+</style>
+</head>
+<body>
+<div style="max-width:1400px;margin:0 auto;">
+<a href="index.html" class="back-btn">← Back to Main Site</a>
+<div class="header">
+  <h1>📧 Email Templates</h1>
+  <p>Personalized outreach emails for all 50 companies in Durres</p>
+</div>
+<input type="text" class="search" id="email-search" placeholder="🔍  Search by company name or sector..."/>
+<div class="count" id="count">Showing all 50 templates</div>
+<div class="grid" id="email-grid"></div>
+</div>
+<div class="modal-overlay" id="email-modal">
+  <div class="modal">
+    <div class="modal-top"><h3 id="modal-title">Email Template</h3><button class="modal-close-btn" onclick="closeEmailModal()">✕</button></div>
+    <div class="modal-body">
+      <div class="email-full" id="modal-email-text"></div>
+      <button class="modal-copy-btn" onclick="copyModalEmail()">📋 Copy Full Email</button>
+    </div>
+  </div>
+</div>
+<script src="app.js"></script>
+<script>
+function getEmailTemplate(c) {
+const sector = {hotel:'hospitality',logistics:'logistics & port operations',construction:'construction & real estate',restaurant:'restaurant & food service',legal:'legal services',medical:'healthcare',realestate:'real estate',it:'IT & digital services',manufacturing:'manufacturing'};
+const greet = c.email !== 'none' ? `Dear ${c.name} Team,` : `Dear ${c.name} Team,`;
+return `${greet}
+
+My name is Andrii, and I am reaching out on behalf of DigiFlow Albania — a digital transformation agency based right here in Durres.
+
+We have been analyzing the digital presence of leading businesses in the ${sector[c.sector]||c.sector} sector, and ${c.name} stood out as a company with significant growth potential through smart digital tools.
+
+─────────────────────────────────────
+🎯 OUR PROPOSAL FOR ${c.name.toUpperCase()}
+─────────────────────────────────────
+
+${c.proposal}
+
+─────────────────────────────────────
+📦 RECOMMENDED PACKAGE
+─────────────────────────────────────
+
+${c.services.map(s=>`✅ ${s}`).join('\n')}
+
+Investment: ${c.price}
+
+─────────────────────────────────────
+🌐 RECOMMENDED WEBSITE STRUCTURE
+─────────────────────────────────────
+
+${c.siteStructure.map((p,i)=>`  ${i+1}. ${p}`).join('\n')}
+
+─────────────────────────────────────
+🤖 AUTOMATION IDEAS (Telegram + N8N)
+─────────────────────────────────────
+
+${c.automations.map(a=>`  • ${a}`).join('\n')}
+
+─────────────────────────────────────
+
+WHY NOW?
+
+Albania's digital adoption is accelerating rapidly. Businesses that invest in automation and online presence today will dominate their sectors in 2025-2026. We help you get there — with zero technical knowledge required on your part.
+
+We offer a FREE 30-minute consultation via Telegram to discuss your specific needs.
+
+📱 Telegram: @DigiFlowAlbania
+✉️  Email: hello@digiflow.al
+📞 Phone: +355 69 123 4567
+🌐 Website: https://albahomelan-bot.github.io/digiflow-albania/
+
+Looking forward to helping ${c.name} thrive digitally!
+
+Best regards,
+DigiFlow Albania Team
+Durres, Albania`;
+}
+
+function renderEmailGrid(list) {
+  const grid = document.getElementById('email-grid');
+  document.getElementById('count').textContent = `Showing ${list.length} of 50 templates`;
+  grid.innerHTML = list.map(c => {
+    const email = getEmailTemplate(c);
+    const preview = email.substring(0, 300);
+    return `<div class="card">
+      <div class="card-header">
+        <div class="card-num">#${String(c.id).padStart(2,'0')}</div>
+        <div class="card-name">${c.name}</div>
+        <div class="card-sector">${c.sector} · ${c.location}</div>
+      </div>
+      <div class="email-preview">${preview}...</div>
+      <div class="card-actions">
+        <button class="btn-copy" id="copy-${c.id}" onclick="copyEmail(${c.id})">📋 Copy Email</button>
+        <button class="btn-view" onclick="viewEmail(${c.id})">View Full</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function copyEmail(id) {
+  const c = companies.find(x=>x.id===id);
+  navigator.clipboard.writeText(getEmailTemplate(c)).then(()=>{
+    const btn = document.getElementById('copy-'+id);
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='📋 Copy Email'; btn.classList.remove('copied'); }, 2500);
+  });
+}
+
+function viewEmail(id) {
+  const c = companies.find(x=>x.id===id);
+  document.getElementById('modal-title').textContent = c.name + ' — Email Template';
+  document.getElementById('modal-email-text').textContent = getEmailTemplate(c);
+  document.getElementById('email-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function copyModalEmail() {
+  const text = document.getElementById('modal-email-text').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.querySelector('.modal-copy-btn');
+    btn.textContent='✓ Copied to Clipboard!';
+    setTimeout(()=>{ btn.textContent='📋 Copy Full Email'; }, 2000);
+  });
+}
+
+function closeEmailModal() {
+  document.getElementById('email-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.getElementById('email-search').addEventListener('input', e=>{
+  const q = e.target.value.toLowerCase();
+  renderEmailGrid(q ? companies.filter(c=>c.name.toLowerCase().includes(q)||c.sector.includes(q)) : companies);
+});
+
+document.getElementById('email-modal').addEventListener('click', e=>{
+  if(e.target===document.getElementById('email-modal')) closeEmailModal();
+});
+
+renderEmailGrid(companies);
+</script>
+</body>
+</html>
