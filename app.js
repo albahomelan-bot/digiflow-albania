@@ -63,6 +63,7 @@ companies.push(
 // ============================================================
 // UI LOGIC
 // ============================================================
+let currentLang = 'en';
 let filteredCompanies = [...companies];
 
 function getSectorBadgeClass(s) {
@@ -250,8 +251,6 @@ const translations = {
     stat1: "Kompani të Analizuara", stat2: "Industri të Mbuluara", stat3: "Rritje e të Ardhurave"
   }
 };
-
-let currentLang = 'en';
 
 function applyTranslation(lang) {
   const t = translations[lang];
